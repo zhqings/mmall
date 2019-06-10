@@ -10,6 +10,7 @@ import java.util.Properties;
 
 /**
  * Created by geely
+ * 从配置文件中读取数据
  */
 public class PropertiesUtil {
 
@@ -21,29 +22,36 @@ public class PropertiesUtil {
         String fileName = "mmall.properties";
         props = new Properties();
         try {
-            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName),"UTF-8"));
+            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName), "UTF-8"));
         } catch (IOException e) {
-            logger.error("配置文件读取异常",e);
+            logger.error("配置文件读取异常", e);
         }
     }
 
-    public static String getProperty(String key){
+    /*
+     * create by zhang 2019/6/10
+     * 根据key值取出value值
+     */
+    public static String getProperty(String key) {
         String value = props.getProperty(key.trim());
-        if(StringUtils.isBlank(value)){
+        if (StringUtils.isBlank(value)) {
             return null;
         }
         return value.trim();
     }
 
-    public static String getProperty(String key,String defaultValue){
+    /*
+     * create by zhang 2019/6/10
+     * 根据key值取出value值，当value为null或空时，返回默认值
+     */
+    public static String getProperty(String key, String defaultValue) {
 
         String value = props.getProperty(key.trim());
-        if(StringUtils.isBlank(value)){
+        if (StringUtils.isBlank(value)) {
             value = defaultValue;
         }
         return value.trim();
     }
-
 
 
 }

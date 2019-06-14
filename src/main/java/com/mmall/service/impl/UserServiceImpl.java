@@ -33,6 +33,7 @@ public class UserServiceImpl implements IUserService {
         }
 //      对密码进行md5加密
         String md5Password = MD5Util.MD5EncodeUtf8(password);
+        System.out.println(md5Password);
         User user = userMapper.selectLogin(username, md5Password);
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");

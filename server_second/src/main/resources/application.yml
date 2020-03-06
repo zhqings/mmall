@@ -1,12 +1,12 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8079/eureka/
+      defaultZone: http://localhost:8080/eureka/
     register-with-eureka: false #是否注册本身
   server:
     rate-limiter-enabled: false #是否关闭心跳机制 只能在开发环境中使用
 spring:
   application:
-    name: eureka_first
+    name: eureka_second
 server:
-  port: 8080
+  port: 8079

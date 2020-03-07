@@ -1,14 +1,12 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
-    name: firstclient
-profiles:
-  dev
+    name: secondclient
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/,http://localhost:8079/eureka/
   instance:
-    hostname: firstclient
-    instance-id: firstclient:8081
+    hostname: secondclient
+    instance-id: secondclient:8082

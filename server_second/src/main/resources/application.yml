@@ -2,11 +2,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/
-    register-with-eureka: false #ÊÇ·ñ×¢²á±¾Éí
+    register-with-eureka: false #ï¿½Ç·ï¿½×¢ï¿½á±¾ï¿½ï¿½
   server:
-    rate-limiter-enabled: false #ÊÇ·ñ¹Ø±ÕÐÄÌø»úÖÆ Ö»ÄÜÔÚ¿ª·¢»·¾³ÖÐÊ¹ÓÃ
+    rate-limiter-enabled: false #ï¿½Ç·ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ö»ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+  instance:
+    hostname: localhost
 spring:
   application:
-    name: eureka_second
+    name: eurekasecond
 server:
   port: 8079

@@ -5,12 +5,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/order")
@@ -18,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class OrderController {
 
-    @ApiOperation(value = "进程间调用信息第一种方法")
+    @ApiOperation(value = "进程间调用信息第一种方法", notes = "url接口固定")
     @GetMapping("/first")
     public String getFirst() {
         RestTemplate template = new RestTemplate();
@@ -29,22 +30,36 @@ public class OrderController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @ApiOperation(value = "进程间调用信息第二种方法")
+    @ApiOperation(value = "进程间调用信息第二种方法", notes = "使用服务器调用，需要导入balance获取应用名及url")
     @GetMapping("/second")
     public String getSecond() {
         RestTemplate template = new RestTemplate();
-        ServiceInstance serviceInstance = loadBalancerClient.choose("firstclient");
-        System.out.println(serviceInstance.toString());
-        System.out.println(serviceInstance.getPort());
-        System.out.println(serviceInstance.getInstanceId());
-        System.out.println(serviceInstance.getUri());
-        if (serviceInstance==null){
-            log.debug("is null");
-        }
-        String url = String.format("http://%s:%s",serviceInstance.getHost(),serviceInstance.getPort())+"/product/getlist";
-        System.out.println(url);
+        ServiceInstance serviceInstance = loadBalancerClient.choose("first-client");
+        String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort()) + "/product/getlist";
         String response = template.getForObject(url, String.class);
-        log.debug("response={}",response);
+        log.info("response={}", response);
+        return response;
+    }
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @ApiOperation(value = "进程间调用信息第三种方法", notes = "使用服务器调用，需要添加balances配置RestTemplateConfig.java")
+    @GetMapping("/third")
+    public String getThird() {
+        String response = restTemplate.getForObject("http://first-client/product/getlist", String.class);
+        log.info("response={}", response);
+        return response;
+    }
+
+    @Autowired
+    private OrderClient feignClient;
+
+    @ApiOperation(value = "进程间调用信息第四种方法", notes = "添加feign依赖，并在启动类上添加feign注解，写interface接口")
+    @GetMapping("/fourth")
+    public String getFourth() {
+        String response = feignClient.feignGetList();
+        log.info("response={}", response);
         return response;
     }
 }

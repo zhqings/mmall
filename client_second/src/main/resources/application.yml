@@ -6,7 +6,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka/,http://localhost:8079/eureka/
+      defaultZone: http://localhost:8080/eureka/,http://localhost:8090/eureka/
   instance:
-    hostname: secondclient
-    instance-id: secondclient:8082
+#    hostname: secondclient
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true

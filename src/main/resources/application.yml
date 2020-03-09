@@ -1,14 +1,11 @@
+#spring:
+#  application:
+#    name: eurekafirst
+server:
+  port: 8080
 eureka:
   instance:
     hostname: localhost
   client:
     service-url:
-      defaultZone: http://localhost:8079/eureka/
-    register-with-eureka: false #�Ƿ�ע�᱾��
-  server:
-    rate-limiter-enabled: false #�Ƿ�ر��������� ֻ���ڿ���������ʹ��
-spring:
-  application:
-    name: eurekafirst
-server:
-  port: 8080
+      defaultZone: http://localhost:8080/eureka/

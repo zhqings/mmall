@@ -16,6 +16,7 @@ public class ProductController {
 
     @GetMapping("/getlist")
     public String list() {
+        System.out.println("run first client2");
         return new ProductInfo(1, "桌子", 2).toString();
     }
 }

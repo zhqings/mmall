@@ -1,4 +1,4 @@
-package com.eureka.client_second;
+package com.client_third;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class ClientSecondApplication {
+public class ClientThirdApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientSecondApplication.class, args);
+        SpringApplication.run(ClientThirdApplication.class, args);
     }
 
 }

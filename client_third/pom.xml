@@ -8,10 +8,10 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.eureka</groupId>
-    <artifactId>client_second</artifactId>
+    <groupId>com</groupId>
+    <artifactId>client_third</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>client_second</name>
+    <name>client_third</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -34,22 +34,11 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.4.7.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <!-- swagger核心包 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <!-- 一个无依赖的HTML、JS和CSS集合，可以为Swagger兼容API动态生成优雅文档。 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -2,13 +2,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/
-    register-with-eureka: false #�Ƿ�ע�᱾��
-  server:
-    rate-limiter-enabled: false #�Ƿ�ر��������� ֻ���ڿ���������ʹ��
   instance:
-    hostname: localhost
+    prefer-ip-address: true
 spring:
   application:
     name: eurekasecond
 server:
-  port: 8079
+  port: 8090

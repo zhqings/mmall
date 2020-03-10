@@ -1,4 +1,4 @@
-package com.client_third.controller;
+package com.eureka.client_third.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,5 +1,6 @@
 package com.eureka.client_second.controller;
 
+import com.eureka.client_first.model.ProductInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -55,11 +56,22 @@ public class OrderController {
     @Autowired
     private OrderClient feignClient;
 
-    @ApiOperation(value = "进程间调用信息第四种方法", notes = "添加feign依赖，并在启动类上添加feign注解，写interface接口")
+    @ApiOperation(value = "进程间调用信息第四种方法", notes = "添加feign依赖，并在启动类上添加feign注解，写interface接口,接口中的参数必须有注解")
     @GetMapping("/fourth")
-    public String getFourth() {
-        String response = feignClient.feignGetList();
+    public String getFourth(String userName) {
+        ProductInfo tempInfo = new ProductInfo(2, "三五", 12);
+        log.info(tempInfo.toString());
+        String response = feignClient.feignGetList(userName);
         log.info("response={}", response);
         return response;
+    }
+
+    @ApiOperation(value = "多模块的使用", notes = "修改打包类型，最外层打方式改为pom，内层parent修改，如果使用其他包下的类需要将该包引入依赖")
+    @GetMapping("/updatemodule")
+    public String updateModule() {
+        ProductInfo tempInfo = new ProductInfo(2, "三五", 12);
+        log.info(tempInfo.toString());
+//        log.info("response={}", response);
+        return tempInfo.toString();
     }
 }

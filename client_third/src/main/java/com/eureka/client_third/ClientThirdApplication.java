@@ -1,4 +1,4 @@
-package com.client_third;
+package com.eureka.client_third;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

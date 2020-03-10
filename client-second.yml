@@ -1,0 +1,13 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: secondclient
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/,http://localhost:8090/eureka/
+  instance:
+#    hostname: secondclient
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true

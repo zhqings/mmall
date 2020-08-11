@@ -19,6 +19,7 @@
         <module>client_first</module>
         <module>client_second</module>
         <module>client_third</module>
+        <module>client_mall</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

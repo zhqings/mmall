@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### STS ###
+.idea
 .apt_generated
 .classpath
 .factorypath
@@ -31,3 +32,10 @@ build/
 
 ### VS Code ###
 .vscode/
+/education/.mvn/wrapper/
+/.idea/
+/.idea/libraries/Maven__antlr_antlr_2_7_7.xml
+/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml
+/education/.mvn/wrapper/
+/.idea/
+/.idea/artifacts/mmall_war_exploded.xml
